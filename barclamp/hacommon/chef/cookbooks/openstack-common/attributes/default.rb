@@ -110,6 +110,20 @@ default["openstack"]["zypp"]["uri"] = "http://download.opensuse.org/repositories
 # instead assign IP addresses (for an actual node or a load balanced virtual
 # IP) in a network to a particular OpenStack service endpoint.
 
+# ******************** OpenStack Identity Endpoints ***************************
+
+# The OpenStack Identity (Keystone) API endpoint. This is commonly called
+# the Keystone Service endpoint...
+default['openstack']['endpoints']['identity-api']['host'] = "127.0.0.1"
+default['openstack']['endpoints']['identity-api']['scheme'] = "http"
+default['openstack']['endpoints']['identity-api']['port'] = "5000"
+default['openstack']['endpoints']['identity-api']['path'] = "/v2.0"
+
+# The OpenStack Identity (Keystone) Admin API endpoint
+default['openstack']['endpoints']['identity-admin']['host'] = "127.0.0.1"
+default['openstack']['endpoints']['identity-admin']['scheme'] = "http"
+default['openstack']['endpoints']['identity-admin']['port'] = "35357"
+default['openstack']['endpoints']['identity-admin']['path'] = "/v2.0"
 
 # ****************** OpenStack Compute Endpoints ******************************
 
@@ -153,6 +167,19 @@ default['openstack']['endpoints']['network-api']['port'] = "9696"
 # path needs to be empty
 default['openstack']['endpoints']['network-api']['path'] = ""
 
+# ******************** OpenStack Image Endpoints ******************************
+
+# The OpenStack Image (Glance) API endpoint
+default['openstack']['endpoints']['image-api']['host'] = "127.0.0.1"
+default['openstack']['endpoints']['image-api']['scheme'] = "http"
+default['openstack']['endpoints']['image-api']['port'] = "9292"
+default['openstack']['endpoints']['image-api']['path'] = "/v2"
+
+# The OpenStack Image (Glance) Registry API endpoint
+default['openstack']['endpoints']['image-registry']['host'] = "127.0.0.1"
+default['openstack']['endpoints']['image-registry']['scheme'] = "http"
+default['openstack']['endpoints']['image-registry']['port'] = "9191"
+default['openstack']['endpoints']['image-registry']['path'] = "/v2"
 
 # ******************** OpenStack Volume Endpoints *****************************
 
@@ -244,10 +271,10 @@ default['openstack']['db']['identity']['port'] = node['openstack']['db']['port']
 default['openstack']['db']['identity']['db_name'] = "keystone"
 
 # Database used by the OpenStack Image (Glance) service
-# default['openstack']['db']['image']['db_type'] = node['openstack']['db']['service_type']
-# default['openstack']['db']['image']['host'] = "127.0.0.1"
-# default['openstack']['db']['image']['port'] = node['openstack']['db']['port']
-# default['openstack']['db']['image']['db_name'] = "glance"
+default['openstack']['db']['image']['db_type'] = node['openstack']['db']['service_type']
+default['openstack']['db']['image']['host'] = "127.0.0.1"
+default['openstack']['db']['image']['port'] = node['openstack']['db']['port']
+default['openstack']['db']['image']['db_name'] = "glance"
 
 # Database used by the OpenStack Network (Quantum) service
 default['openstack']['db']['network']['db_type'] = node['openstack']['db']['service_type']
@@ -275,11 +302,11 @@ default['openstack']['db']['metering']['db_name'] = "ceilometer"
 
 # Switch to store the MySQL root password in a databag instead of
 # using the generated OpenSSL cookbook secure_password one.
-default['openstack']['db']['root_user_use_databag'] = true 
+default['openstack']['db']['root_user_use_databag'] = false
 
 # If above root_user_use_databag is true, the below string
 # will be passed to the user_password library routine.
-default['openstack']['db']['root_user_key'] = 'root_db_password'
+default['openstack']['db']['root_user_key'] = 'mysqlroot'
 
 # logging.conf list keypairs module_name => log level to write
 default['openstack']['logging']['ignore'] = {'nova.api.openstack.wsgi' => 'WARNING',
