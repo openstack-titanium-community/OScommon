@@ -1,0 +1,28 @@
+{
+  "id": "bc-template-hacommon",
+  "description": "Ha Openstack Common",
+  "attributes": {
+    "hacommon": {
+      "update_origins": false
+    }
+  },
+  "deployment": {
+    "hacommon": {
+      "crowbar-revision": 0,
+      "element_states": {
+        "hacommon": [ "readying", "ready", "applying" ]
+      },
+      "elements": {},
+      "element_order": [
+        [ "hacommon" ]
+      ],
+      "config": {
+        "environment": "hacommon-base-config",
+        "mode": "full",
+        "transitions": false,
+        "transition_list": []
+      }
+    }
+  }
+}
+
