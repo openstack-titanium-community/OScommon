@@ -1,0 +1,28 @@
+{
+  "id": "bc-template-openstack-common",
+  "description": "provides a openstack-common installation Source repository",
+  "attributes": {
+    "openstack-common": {
+      "update_origins": false
+    }
+  },
+  "deployment": {
+    "openstack-common": {
+      "crowbar-revision": 0,
+      "element_states": {
+        "openstack-common": [ "readying", "ready", "applying" ]
+      },
+      "elements": {},
+      "element_order": [
+        [ "openstack-common" ]
+      ],
+      "config": {
+        "environment": "openstack-common-base-config",
+        "mode": "full",
+        "transitions": false,
+        "transition_list": []
+      }
+    }
+  }
+}
+
