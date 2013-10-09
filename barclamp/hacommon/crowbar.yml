@@ -19,7 +19,7 @@ barclamp:
   display: HaCommon 
   version: 0
   member:
-    - ha-openstack 
+    - haopenstack 
 
 crowbar:
   layout: 1
